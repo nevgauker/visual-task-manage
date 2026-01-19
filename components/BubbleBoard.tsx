@@ -94,7 +94,16 @@ function makeInitialBubbles(
     labels?: string[],
     items?: BubbleItem[]
 ): Bubble[] {
-    const resolvedItems =
+    const resolvedItems: Array<{
+        id: string;
+        label: string;
+        color: string;
+        r: number;
+        tag?: string;
+        glow?: string;
+        posX?: number;
+        posY?: number;
+    }> =
         items !== undefined
             ? items.map((item, i) => ({
                   id: item.id,
@@ -115,6 +124,8 @@ function makeInitialBubbles(
                           label,
                           r: [46, 60, 40, 70, 52, 58, 48, 50][i % 8],
                           color: colors[i % colors.length],
+                          posX: undefined,
+                          posY: undefined,
                       };
                   }
               );
